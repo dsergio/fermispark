@@ -239,7 +239,7 @@ print("photon events HDFS data: ", photon_events_hdfs_data)
 2. Define spark mappers
 '''
 
-def sky_grid_mapper(row, grid_precision = 1):
+def sky_grid_mapper(row, grid_precision = 0):
     ra = row["RA"]
     dec = row["DEC"]
     energy = row["ENERGY"]
@@ -258,7 +258,7 @@ def sky_grid_mapper(row, grid_precision = 1):
 
     return (ra_precision, dec_precision), (energy, 1)
 
-def sky_grid_energy_bins_mapper(row, bin_width_MeV = 100000, max_energy_MeV = 400000):
+def sky_grid_energy_bins_mapper(row, bin_width_MeV = 100000, grid_precision = 0):
     ra = row["RA"]
     dec = row["DEC"]
     energy = row["ENERGY"]
@@ -282,7 +282,7 @@ def sky_grid_energy_bins_mapper(row, bin_width_MeV = 100000, max_energy_MeV = 40
 
     return (ra_precision, dec_precision), energy_bins_buckets
 
-def sky_grid_energy_bins_count_mapper(row, bin_width_MeV = 100000, max_energy_MeV = 400000):
+def sky_grid_energy_bins_count_mapper(row, bin_width_MeV = 100000, grid_precision = 0):
     ra = row["RA"]
     dec = row["DEC"]
     energy = row["ENERGY"]
